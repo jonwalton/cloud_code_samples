@@ -42,12 +42,13 @@ namespace Challenge1
                         {
                             if (newServerList.Count < serversToBuild)
                             {
-                                for (int i = 0; i < 3; i++)
+                                // build all servers at once
+                                for (int i = 0; i < serversToBuild; i++)
                                 {
-                                    Console.WriteLine(String.Format("Creating server: {0}{1}...", ServerNamePrefix, i+1));
+                                    Console.WriteLine(String.Format("Creating server: {0}{1}...", ServerNamePrefix, newServerList.Count+1));
 
                                     // Create a 512mb cloud server instance using centos 6.0
-                                    newServerList.Add(cloudServers.CreateServer(String.Format("{0}{1}", ServerNamePrefix, i+1), "a3a2c42f-575f-4381-9c6d-fcd3b7d07d17", "2", region: ServerRegion));
+                                    newServerList.Add(cloudServers.CreateServer(String.Format("{0}{1}", ServerNamePrefix, newServerList.Count+1), "a3a2c42f-575f-4381-9c6d-fcd3b7d07d17", "2", region: ServerRegion));
                                 }
 
                                 Console.WriteLine();
